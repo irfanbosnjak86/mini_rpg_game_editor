@@ -9,7 +9,7 @@ Feature: Manage Articles
     Then I should see "Warrior"
     And I should see "Mage"
 
-  Scenario: Create Character Type
+  Scenario: Create Character Type with valid data provided
     Given I have no character types
     And I am on the list of character types
     When I follow "Create Character Type"
@@ -18,3 +18,12 @@ Feature: Manage Articles
     Then I should see "New character type created."
     And I should see "Warrior"
     And I should have 1 character type
+
+  Scenario: Prevent Create Character Type if invalid data provided 
+    Given I have no character types
+    And I am on the list of character types
+    When I follow "Create Character Type"
+    And I fill in "Name" with ""
+    And I press "Create"
+    Then I should see "1 error prohibited this character type from being saved: Name can't be blank Name"
+    And I should have 0 character type

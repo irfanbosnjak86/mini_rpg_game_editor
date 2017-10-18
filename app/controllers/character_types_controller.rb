@@ -8,9 +8,13 @@ class CharacterTypesController < ApplicationController
   end
 
   def create
-    @character = CharacterType.create(charcters_params)
-    flash[:notice] = "New character type created."
-    redirect_to character_types_path
+    @character = CharacterType.new(charcters_params)
+    if @character.save
+      flash[:notice] = "New character type created."
+      redirect_to character_types_path
+    else
+      render :new
+    end
   end
 
   private 
