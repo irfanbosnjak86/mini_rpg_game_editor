@@ -17,6 +17,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Added Gems
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+gem 'haml', '~> 5.0', '>= 5.0.4'
+gem "haml-rails", "~> 1.0"
 
 
 group :development, :test do
