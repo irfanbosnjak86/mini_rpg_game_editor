@@ -8,3 +8,13 @@ Feature: Manage Articles
     When I go to the list of character types
     Then I should see "Warrior"
     And I should see "Mage"
+
+  Scenario: Create Character Type
+    Given I have no character types
+    And I am on the list of character types
+    When I follow "Create Character Type"
+    And I fill in "Name" with "Warrior"
+    And I press "Create"
+    Then I should see "New character type created."
+    And I should see "Warrior"
+    And I should have 1 character type
