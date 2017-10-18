@@ -17,7 +17,7 @@ Given("I have no character types") do
 end
 
 Given("I am on the list of character types") do
-  pending # Write code here that turns the phrase above into concrete actions
+  visit character_types_path
 end
 
 When("I follow {string}") do |string|
