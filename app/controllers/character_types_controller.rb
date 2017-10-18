@@ -1,6 +1,11 @@
 class CharacterTypesController < ApplicationController
+  before_action :set_character, only: :show
+  
   def index
     @characters = CharacterType.all
+  end
+
+  def show
   end
 
   def new
@@ -19,7 +24,11 @@ class CharacterTypesController < ApplicationController
 
   private 
 
-  def charcters_params
-    params.require(:character_type).permit(:name)
-  end
+    def charcters_params
+      params.require(:character_type).permit(:name)
+    end
+
+    def set_character
+      @character = CharacterType.find(params[:id])
+    end
 end

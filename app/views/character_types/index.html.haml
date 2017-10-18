@@ -1,4 +1,16 @@
-- @characters.each do |character|
-  %h2= character.name.to_s 
+.container
+  .row
+    %br/
+    = link_to "Create Character Type", new_character_type_path, class: "btn btn-primary pull-right"
+  .row
+    %h2 List of Character Types
+    %table.table.table-bordered
+      %thead
+        %tr
+          %th Name
+      %tbody
+        - @characters.each do |character|
+          %tr
+            %td= link_to character.name, character_type_path(character) 
 
-= link_to "Create Character Type", new_character_type_path, class: "btn btn-primary"
+  
