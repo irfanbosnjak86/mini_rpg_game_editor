@@ -13,7 +13,7 @@ Then("I should see {string}") do |string|
 end
 
 Given("I have no character types") do
-  pending # Write code here that turns the phrase above into concrete actions
+  CharacterType.delete_all
 end
 
 Given("I am on the list of character types") do
