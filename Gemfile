@@ -15,6 +15,9 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
+# Added Gems
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.7', '>= 3.7.1'
