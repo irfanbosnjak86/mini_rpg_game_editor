@@ -27,3 +27,11 @@ Feature: Manage Articles
     And I press "Create"
     Then I should see "1 error prohibited this character type from being saved: Name can't be blank Name"
     And I should have 0 character type
+
+  Scenario: Show Caracter Type
+    Given I have character types named Warrior, Mage
+    When I go to the list of character types
+    Then I should see "Warrior"
+    And I follow "Warrior"
+    Then I should see "Character Type"
+    And I should see "Name: Warrior"
