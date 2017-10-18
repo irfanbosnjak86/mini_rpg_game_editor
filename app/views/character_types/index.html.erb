@@ -1,3 +1,5 @@
 <%= @characters.each do |character| %>
-  <%= character.name %>
+  <%= character.name.to_s %>
 <% end %>
+
+<%= link_to "Create Character Type", new_character_type_path %>

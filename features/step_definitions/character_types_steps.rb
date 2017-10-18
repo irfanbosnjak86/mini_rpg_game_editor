@@ -8,30 +8,30 @@ When(/^I go to the list of character types$/) do
   visit character_types_path
 end
 
-Then("I should see {string}") do |string|
+Then(/^I should see "([^\"]*)"$/) do |string|
   expect(page).to have_content(string)
 end
 
-Given("I have no character types") do
+Given(/^I have no character types$/) do
   CharacterType.delete_all
 end
 
-Given("I am on the list of character types") do
+Given(/^I am on the list of character types$/) do
   visit character_types_path
 end
 
-When("I follow {string}") do |string|
-  pending # Write code here that turns the phrase above into concrete actions
+When(/^I follow "([^\"]*)"$/) do |link|
+  click_link(link)
 end
 
-When("I fill in {string} with {string}") do |string, string2|
-  pending # Write code here that turns the phrase above into concrete actions
+When(/^I fill in "([^\"]*)" with "([^\"]*)"$/) do |field, value|
+  fill_in(field, :with => value) 
 end
 
-When("I press {string}") do |string|
-  pending # Write code here that turns the phrase above into concrete actions
+When(/^I press "([^\"]*)"$/) do |button|
+  click_button(button)
 end
 
-Then("I should have {int} character type") do |int|
-  pending # Write code here that turns the phrase above into concrete actions
+Then(/^I should have (\d+) character type$/) do |count|
+  CharacterType.count.should == count.to_i
 end
