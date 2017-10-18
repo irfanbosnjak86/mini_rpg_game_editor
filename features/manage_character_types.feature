@@ -35,3 +35,16 @@ Feature: Manage Articles
     And I follow "Warrior"
     Then I should see "Character Type"
     And I should see "Name: Warrior"
+
+  Scenario: Edit Caracter Type
+    Given I have character types named Warrior, Mage
+    When I go to the list of character types
+    Then I should see "Warrior"
+    And I should see "Mage"
+    And I press "Edit"
+    And I fill in "Name" with "Warlock"
+    And I press "Create"
+    Then I should see "Character type successfuly updated."
+    And I should see "Warlock"
+    And I should see "Mage"
+    And I should have 1 character type
