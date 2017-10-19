@@ -8,5 +8,10 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     .container
-      = flash[:notice]
-      = yield
+      .row
+        .col-md-12
+          - flash.each do |key, msg|
+            .text-center.alert{ class: (key == 'notice' ? 'alert-success' : 'alert-danger') }
+              = msg
+
+          = yield
