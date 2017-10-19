@@ -8,9 +8,11 @@
       %thead
         %tr
           %th Name
+          %th Option
       %tbody
         - @characters.each do |character|
           %tr
             %td= link_to character.name, character_type_path(character) 
+            %td= link_to "Edit", edit_character_type_path(character), class: "btn btn-xs btn-warning"
 
   

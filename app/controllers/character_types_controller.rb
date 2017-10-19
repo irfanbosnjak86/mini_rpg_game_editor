@@ -1,6 +1,6 @@
 class CharacterTypesController < ApplicationController
-  before_action :set_character, only: :show
-  
+  before_action :set_character, only: [:show, :edit, :update]
+
   def index
     @characters = CharacterType.all
   end
@@ -20,6 +20,18 @@ class CharacterTypesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+  end
+
+  def update
+    if @character.update(charcters_params)
+      flash[:notice] = "Character type successfuly updated."
+      redirect_to character_types_path
+    else
+      render :edit
+    end  
   end
 
   private 

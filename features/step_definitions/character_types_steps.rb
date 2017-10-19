@@ -35,3 +35,12 @@ end
 Then(/^I should have (\d+) character type$/) do |count|
   CharacterType.count.should == count.to_i
 end
+
+
+When(/^I click on option "([^\"]*)" on "([^\"]*)" row$/) do |button, name|
+  within(:xpath, "//table/tbody/tr[contains(.,'#{name}')]") do
+    link = find(:xpath, "td[contains(.,'#{button}')]/a")['href']
+    visit link
+  end
+end
+

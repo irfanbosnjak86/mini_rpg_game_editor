@@ -1,0 +1,15 @@
+= form_for @character do |f|
+  - if @character.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@character.errors.count, "error")
+        prohibited this character type from being saved:
+      %ul
+        - @character.errors.full_messages.each do |msg|
+          %li= msg
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control', required: true
+  
+  .action
+    = f.submit class: 'btn btn-success'

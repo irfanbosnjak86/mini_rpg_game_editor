@@ -13,8 +13,9 @@ Feature: Manage Articles
     Given I have no character types
     And I am on the list of character types
     When I follow "Create Character Type"
+    Then I should see "New Character Type"
     And I fill in "Name" with "Warrior"
-    And I press "Create"
+    And I press "Create Character type"
     Then I should see "New character type created."
     And I should see "Warrior"
     And I should have 1 character type
@@ -23,8 +24,9 @@ Feature: Manage Articles
     Given I have no character types
     And I am on the list of character types
     When I follow "Create Character Type"
+    Then I should see "New Character Type"
     And I fill in "Name" with ""
-    And I press "Create"
+    And I press "Create Character type"
     Then I should see "1 error prohibited this character type from being saved: Name can't be blank Name"
     And I should have 0 character type
 
@@ -41,10 +43,11 @@ Feature: Manage Articles
     When I go to the list of character types
     Then I should see "Warrior"
     And I should see "Mage"
-    And I press "Edit"
+    When I click on option "Edit" on "Warrior" row
+    Then I should see "Edit Character Type"
     And I fill in "Name" with "Warlock"
-    And I press "Create"
+    And I press "Update Character type"
     Then I should see "Character type successfuly updated."
     And I should see "Warlock"
     And I should see "Mage"
-    And I should have 1 character type
+    And I should have 2 character type
