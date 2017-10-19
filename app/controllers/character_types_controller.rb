@@ -10,11 +10,11 @@ class CharacterTypesController < ApplicationController
   end
 
   def new
-    @character = CharacterType.new
+    @character = current_user.character_types.new
   end
 
   def create
-    @character = CharacterType.new(charcters_params)
+    @character = current_user.character_types.new(charcters_params)
     if @character.save
       flash[:notice] = "New character type created."
       redirect_to character_types_path

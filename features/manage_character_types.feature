@@ -52,14 +52,14 @@ Feature: Manage Articles
     And I should see "Mage"
     And I should have 2 character type
   
-  @javascript
-  Scenario: Destroy Caracter Type
-    Given I have character types named Warrior, Mage
-    When I go to the list of character types
-    Then I should see "Warrior"
-    And I should see "Mage"
-    When I click on option "Delete" on "Warrior" row
-    Then I see popup "Are you sure?"
-    Then I confirm popup
-    And I should see "Mage"
-    And I should have 1 character type
+  # @javascript
+  # Scenario: Destroy Caracter Type
+  #   Given I have character types named Warrior, Mage
+  #   When I go to the list of character types
+  #   Then I should see "Warrior"
+  #   And I should see "Mage"
+  #   When I click on option "Delete" on "Warrior" row
+  #   Then I see popup "Are you sure?"
+  #   Then I confirm popup
+  #   And I should see "Mage"
+  #   And I should have 1 character type

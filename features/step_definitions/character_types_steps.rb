@@ -1,7 +1,14 @@
+def user
+  @user ||= User.create!(username: "username", email: "test@test.com", password: "secrete")
+end
+
 Given(/^I have character types named (.+)$/) do |names|
+  user
+  login_as(@user)
   names.split(", ").each do |name|
-    CharacterType.create!(name: name)
+    CharacterType.create!(name: name, user_id: @user.id)
   end
+
 end
 
 When(/^I go to the list of character types$/) do
