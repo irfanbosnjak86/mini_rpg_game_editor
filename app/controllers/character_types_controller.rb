@@ -43,7 +43,7 @@ class CharacterTypesController < ApplicationController
   private 
 
     def charcters_params
-      params.require(:character_type).permit(:name)
+      params.require(:character_type).permit(:name, :character_avatar)
     end
 
     def set_character

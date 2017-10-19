@@ -10,6 +10,10 @@
   .form-group
     = f.label :name
     = f.text_field :name, class: 'form-control', required: true
+
+  .form-group
+    = f.label :character_avatar
+    = f.file_field :character_avatar, class: 'form-control'
   
   .action
     = f.submit class: 'btn btn-success'

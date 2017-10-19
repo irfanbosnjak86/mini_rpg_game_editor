@@ -9,11 +9,13 @@
       %thead
         %tr
           %th Name
+          %th Avatar
           %th Option
       %tbody
         - @characters.each do |character|
           %tr
             %td= link_to character.name, character_type_path(character) 
+            %td= image_tag(character.character_avatar, size: "20x20")
             %td
               = link_to "Edit", edit_character_type_path(character), class: "btn btn-xs btn-warning"
               = link_to "Delete", character_type_path(character), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-xs btn-danger"
