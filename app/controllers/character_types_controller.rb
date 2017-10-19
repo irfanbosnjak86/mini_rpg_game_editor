@@ -1,5 +1,5 @@
 class CharacterTypesController < ApplicationController
-  before_action :set_character, only: [:show, :edit, :update]
+  before_action :set_character, only: [:show, :edit, :update, :destroy]
 
   def index
     @characters = CharacterType.all
@@ -32,6 +32,11 @@ class CharacterTypesController < ApplicationController
     else
       render :edit
     end  
+  end
+
+  def destroy
+    @character.destroy
+    redirect_to character_types_path
   end
 
   private 

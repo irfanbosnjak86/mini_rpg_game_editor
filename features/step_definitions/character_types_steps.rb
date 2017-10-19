@@ -39,8 +39,17 @@ end
 
 When(/^I click on option "([^\"]*)" on "([^\"]*)" row$/) do |button, name|
   within(:xpath, "//table/tbody/tr[contains(.,'#{name}')]") do
-    link = find(:xpath, "td[contains(.,'#{button}')]/a")['href']
-    visit link
+    find(:xpath, "td/a[contains(.,'#{button}')]").click
   end
 end
+
+
+Then(/^I see popup "([^\"]*)"$/) do |string|
+  page.driver.browser.switch_to.alert.text.should  eq(string)
+end
+
+Then(/^I confirm popup$/) do
+  page.driver.browser.switch_to.alert.accept
+end
+
 

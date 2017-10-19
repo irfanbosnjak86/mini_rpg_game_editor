@@ -1,9 +1,10 @@
 .container
   .row
+    %h2 
+      List of Character Types
+      = link_to "Create Character Type", new_character_type_path, class: "btn btn-primary pull-right"
     %br/
-    = link_to "Create Character Type", new_character_type_path, class: "btn btn-primary pull-right"
   .row
-    %h2 List of Character Types
     %table.table.table-bordered
       %thead
         %tr
@@ -13,6 +14,7 @@
         - @characters.each do |character|
           %tr
             %td= link_to character.name, character_type_path(character) 
-            %td= link_to "Edit", edit_character_type_path(character), class: "btn btn-xs btn-warning"
-
+            %td
+              = link_to "Edit", edit_character_type_path(character), class: "btn btn-xs btn-warning"
+              = link_to "Delete", character_type_path(character), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-xs btn-danger"
   

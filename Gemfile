@@ -21,9 +21,12 @@ gem 'haml', '~> 5.0', '>= 5.0.4'
 gem "haml-rails", "~> 1.0"
 
 
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.7', '>= 3.7.1'
   gem 'cucumber-rails', :require => false
+  gem 'selenium-webdriver', '~> 3.6'
+  gem 'geckodriver-helper'
   gem 'database_cleaner'
   gem 'byebug', platform: :mri
 end
