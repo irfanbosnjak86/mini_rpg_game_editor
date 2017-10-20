@@ -1,0 +1,2 @@
+class CharacterAttributesController < ApplicationController
+end

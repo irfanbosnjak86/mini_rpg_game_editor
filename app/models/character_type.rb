@@ -4,6 +4,4 @@ class CharacterType < ApplicationRecord
   mount_uploader :character_avatar, CharacterAvatarUploader
   
   validates :name, :character_avatar, presence: true
-
-
 end
