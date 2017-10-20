@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :character_types
+  has_many :character_types, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
