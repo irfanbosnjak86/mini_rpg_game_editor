@@ -28,7 +28,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.7', '>= 3.7.1'
   gem 'cucumber-rails', :require => false
   gem 'selenium-webdriver', '~> 3.6'
-  gem 'geckodriver-helper'
+  gem 'geckodriver-helper' #Added because of selenium
   gem 'database_cleaner'
   gem 'byebug', platform: :mri
 end
