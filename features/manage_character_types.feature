@@ -4,12 +4,14 @@ Feature: Manage Articles
   I want to create and manage characters types
   
   Scenario: Characters List
+    Given I am loged in as User
     Given I have character types named Warrior, Mage
     When I go to the list of character types
     Then I should see "Warrior"
     And I should see "Mage"
 
   Scenario: Create Character Type with valid data provided
+    Given I am loged in as User
     Given I have no character types
     And I am on the list of character types
     When I follow "Create Character Type"
@@ -21,6 +23,7 @@ Feature: Manage Articles
     And I should have 1 character type
 
   Scenario: Prevent Create Character Type if invalid data provided 
+    Given I am loged in as User
     Given I have no character types
     And I am on the list of character types
     When I follow "Create Character Type"
@@ -31,6 +34,7 @@ Feature: Manage Articles
     And I should have 0 character type
 
   Scenario: Show Caracter Type
+    Given I am loged in as User
     Given I have character types named Warrior, Mage
     When I go to the list of character types
     Then I should see "Warrior"
@@ -39,6 +43,7 @@ Feature: Manage Articles
     And I should see "Name: Warrior"
 
   Scenario: Edit Caracter Type
+    Given I am loged in as User
     Given I have character types named Warrior, Mage
     When I go to the list of character types
     Then I should see "Warrior"
@@ -52,14 +57,15 @@ Feature: Manage Articles
     And I should see "Mage"
     And I should have 2 character type
   
-  # @javascript
-  # Scenario: Destroy Caracter Type
-  #   Given I have character types named Warrior, Mage
-  #   When I go to the list of character types
-  #   Then I should see "Warrior"
-  #   And I should see "Mage"
-  #   When I click on option "Delete" on "Warrior" row
-  #   Then I see popup "Are you sure?"
-  #   Then I confirm popup
-  #   And I should see "Mage"
-  #   And I should have 1 character type
+  @javascript
+  Scenario: Destroy Caracter Type
+    Given I am loged in as User
+    Given I have character types named Warrior, Mage
+    When I go to the list of character types
+    Then I should see "Warrior"
+    And I should see "Mage"
+    When I click on option "Delete" on "Warrior" row
+    Then I see popup "Are you sure?"
+    Then I confirm popup
+    And I should see "Mage"
+    And I should have 1 character type
