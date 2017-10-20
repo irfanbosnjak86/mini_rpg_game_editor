@@ -1,5 +1,18 @@
 .row
-  %h2 Character Type
+  %section#character_type
+    %h2 Character Type
+    %hr/
+    %h2 Name: #{@character.name.capitalize}
+    .avatar
+      = image_tag(@character.character_avatar, size: "100x100")
 
-.row
-  %p Name: #{@character.name.capitalize}
+  %section#character_attributes
+    %h2 Character Attributes 
+    = @character_attributes.each do |attr|
+      Name: 
+      = attr.name 
+
+      Numerical Value: 
+      = attr.numerical_value
+
+    

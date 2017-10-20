@@ -1,7 +1,7 @@
 Given(/^Charactes have attributes$/) do
   chars = CharacterType.all
   chars.each do |char|
-    # CharacterAttribute.create!(character_type_id: char.id, name: "Speed", numerical_value: 30)
+    CharacterAttribute.create!(character_type_id: char.id, name: "Speed", numerical_value: 30)
   end
 end
 

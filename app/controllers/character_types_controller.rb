@@ -7,6 +7,7 @@ class CharacterTypesController < ApplicationController
   end
 
   def show
+    @character_attributes = @character.character_attributes
   end
 
   def new
