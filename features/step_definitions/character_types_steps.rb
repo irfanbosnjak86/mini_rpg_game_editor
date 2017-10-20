@@ -8,8 +8,9 @@ Given(/^I am loged in as User$/) do
 end
 
 Given(/^I have character types named (.+)$/) do |names|
+  file =  File.open("#{Rails.root}/spec/support/avatars/test.jpg")
   names.split(", ").each do |name|
-    CharacterType.create!(name: name, user_id: @user.id)
+    CharacterType.create!(name: name, user_id: @user.id, character_avatar: file)
   end
 end
 
@@ -36,6 +37,12 @@ end
 When(/^I fill in "([^\"]*)" with "([^\"]*)"$/) do |field, value|
   fill_in(field, :with => value) 
 end
+
+Then("I attach Avatar") do
+  file =  File.open("#{Rails.root}/spec/support/avatars/test.jpg")
+  attach_file('Character avatar', file.path)
+end
+
 
 When(/^I press "([^\"]*)"$/) do |button|
   click_button(button)

@@ -17,6 +17,7 @@ Feature: Manage Articles
     When I follow "Create Character Type"
     Then I should see "New Character Type"
     And I fill in "Name" with "Warrior"
+    And I attach Avatar 
     And I press "Create Character type"
     Then I should see "New character type created."
     And I should see "Warrior"
@@ -30,7 +31,7 @@ Feature: Manage Articles
     Then I should see "New Character Type"
     And I fill in "Name" with ""
     And I press "Create Character type"
-    Then I should see "1 error prohibited this character type from being saved: Name can't be blank Name"
+    Then I should see "2 errors prohibited this character type from being saved: Name can't be blank Character avatar can't be blank"
     And I should have 0 character type
 
   Scenario: Show Caracter Type
