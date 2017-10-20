@@ -8,11 +8,15 @@
 
   %section#character_attributes
     %h2 Character Attributes 
-    = @character_attributes.each do |attr|
+    - @character_attributes.each do |attr|
       Name: 
       = attr.name 
 
       Numerical Value: 
       = attr.numerical_value
+
+.row
+  %h2 Add Attribute
+  = render 'character_attributes/form'
 
     

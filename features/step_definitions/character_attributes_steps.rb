@@ -5,7 +5,12 @@ Given(/^Charactes have attributes$/) do
   end
 end
 
-Then(/^I should have (\d+) character attribute for "([^\"]*)"$/) do |count, string|
-  char = CharacterType.find_by(string)
-  char.character_attributes.count == count
+Then(/^I fill out the attribute form$/) do
+  fill_in("Name", with: "Speed")
+  fill_in("Numerical value", with: 30)
+end
+
+Then(/^I should have (\d+) more character attribute on "([^\"]*)"$/) do |count, string|
+  char = CharacterType.find_by_name(string)
+  expect(char.character_attributes.count).to eq(count + 1) 
 end

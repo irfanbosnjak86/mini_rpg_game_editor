@@ -1,0 +1,13 @@
+= form_for([@character, @character.character_attributes.build], 
+  html: {class: 'form-horizontal new_task'}) do |f|
+
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+
+  .form-group
+    = f.label :numerical_value
+    = f.text_field :numerical_value, class: 'form-control'
+  
+  .action
+    = f.submit "Save", class: 'btn btn-success'
