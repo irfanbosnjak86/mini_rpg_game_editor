@@ -42,7 +42,10 @@ class CharacterTypesController < ApplicationController
 
   def destroy
     @character.destroy
-    redirect_to character_types_path
+    respond_to do |format|
+      format.html { redirect_to character_types_path }
+      format.js { head :no_content }
+    end
   end
 
   private 

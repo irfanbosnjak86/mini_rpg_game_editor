@@ -38,7 +38,6 @@ $(document).on('turbolinks:load', function(){
   $(document).on('click', ".delete-attr", function(e){
     var char_attr_id = $(this).attr("data-char-attr");
     var char_id = $(this).attr("data-char-id");
-    var elementId = $(this).attr("id");
     var url = $(this).attr("href");
 
     $.ajax({
@@ -52,5 +51,11 @@ $(document).on('turbolinks:load', function(){
       },
       dataType: "script"
     });
+  });
+
+    // Ajax delete attr
+  $(document).on('click', ".delete-char", function(){
+    var char_id = $(this).attr("data-char-id");
+    $(".col-md-6 .panel-primary#char-" + char_id).remove();
   });
 });

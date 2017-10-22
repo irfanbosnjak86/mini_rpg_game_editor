@@ -35,10 +35,9 @@ class CharacterAttributesController < ApplicationController
   end
 
   def destroy
-    # byebug
     @character_attribute.destroy
     respond_to do |format|
-      format.js { }
+      format.js { head :no_content }
     end
   end
 

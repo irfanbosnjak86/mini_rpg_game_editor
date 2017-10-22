@@ -1,5 +1,9 @@
 .row
-  %h2 Character Type: #{@character.name.capitalize}
+  %h2 
+    Character Type: #{@character.name.capitalize}
+    = link_to "Back", character_types_path, class: "btn btn-md btn-default pull-right" 
+    - if current_user && current_user.id == @character.user_id
+      = link_to "Delete Character", character_type_path(@character), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-md btn-danger pull-right"
   %hr/
   .col-md-4#character_type
     .avatar
