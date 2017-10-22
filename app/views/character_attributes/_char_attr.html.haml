@@ -1,0 +1,10 @@
+.row 
+  .col-md-7 
+    = link_to "#", class: "character_attributes_#{attr.id} list-group-item", onclick: "return false;" do
+      = attr.name
+      %span.badge 
+        = attr.numerical_value
+  - if current_user && current_user.id == @character.user_id
+    .col-md-5
+      = link_to "Edit", edit_character_type_character_attribute_path(@character, attr.id), class: "btn btn-md btn-warning"
+      = link_to "Delete", character_type_character_attribute_path(@character, attr.id), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-md btn-danger"

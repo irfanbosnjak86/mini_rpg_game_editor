@@ -15,3 +15,12 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+$(document).on('turbolinks:load', function(){
+
+  $(document).on('click', "#attr-cancel", function(e){
+    $("#add-attribute").show();
+    $("#att-form").remove();
+  });
+});
