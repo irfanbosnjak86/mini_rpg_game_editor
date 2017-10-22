@@ -9,10 +9,31 @@
   %body
     .container
       .row
-        %nav.nav
-          %ul
-            %li
-              = link_to "Log out", destroy_user_session_path, :method => :delete
+        .navbar.navbar-default
+          .container-fluid
+            .navbar-header
+              = link_to "Mini Game Editor", character_types_path, class: "navbar-brand"
+          
+            %ul.nav.navbar-nav
+              %li= link_to "Home", character_types_path
+              - if current_user 
+                %li.active= link_to "My Characters", character_types_path
+
+            %ul.nav.navbar-nav.navbar-right
+              - if current_user 
+                %li
+                  = link_to destroy_user_session_path, :method => :delete do
+                    %span.glyphicon.glyphicon-log-out
+                    Logout
+              - else
+                %li
+                  = link_to new_user_registration_path do
+                    %span.glyphicon.glyphicon-user
+                    Sign Un
+                %li
+                  = link_to new_user_session_path do
+                    %span.glyphicon.glyphicon-log-in
+                    Login
       
       .row
         .col-md-12
