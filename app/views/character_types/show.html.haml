@@ -6,7 +6,7 @@
       %br/
       = image_tag(@character.character_avatar, class: "char-image")
 
-  .col-md-4#character_attributes
+  .col-md-8#character_attributes
     %h2 Character Attributes 
     %hr/
     .list-group
@@ -22,15 +22,15 @@
               .col-md-5
                 = link_to "Edit", edit_character_type_character_attribute_path(@character, attr.id), class: "btn btn-md btn-warning"
                 = link_to "Delete", character_type_character_attribute_path(@character, attr.id), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-md btn-danger"
+       
+        - if current_user && current_user.id == @character.user_id
+          %hr/
+          = render 'character_attributes/form'
+
       - else 
         This Character doesn't have any attributes
         %br/
-  
-  - if current_user && current_user.id == @character.user_id
-    .col-md-4#add-attribute
-      %h2 Add Attribute
-      %hr/
-      = render 'character_attributes/form'
+
 .row 
   %br/
   %hr/

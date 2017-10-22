@@ -1,13 +1,11 @@
 = form_for([@character, @character_attribute ? @character_attribute : @character.character_attributes.build], 
-  html: {class: 'form-horizontal new_task'}) do |f|
+  html: {class: 'form-horizontal'}) do |f|
 
-  .form-group
-    = f.label :name
-    = f.text_field :name, class: 'form-control'
-
-  .form-group
-    = f.label :numerical_value
-    = f.text_field :numerical_value, class: 'form-control'
-  
-  .action
-    = f.submit "Save", class: 'btn btn-success'
+  #create-attribute
+    = f.text_field :name, class: "col-md-5 list-group-item", id: "char-attr-name", placeholder: "Name"
+    
+    = f.text_field :numerical_value, class: "col-md-2 list-group-item", id: "char-attr-value", placeholder: "Value"
+    .col-md-5.actions 
+      = f.submit "Save", class: 'btn btn-success'
+      = link_to "Cancel", character_type_path(@character), class: 'btn btn-default'
+    

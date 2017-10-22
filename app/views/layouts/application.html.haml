@@ -40,5 +40,6 @@
           - flash.each do |key, msg|
             .text-center.alert{ class: (key == 'notice' ? 'alert-success' : 'alert-danger') }
               = msg
-         
-        = yield
+      .row 
+        .col-md-12  
+          = yield
