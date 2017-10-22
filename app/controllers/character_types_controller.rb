@@ -18,7 +18,7 @@ class CharacterTypesController < ApplicationController
     @character = current_user.character_types.new(charcters_params)
     if @character.save
       flash[:notice] = "New character type created."
-      redirect_to character_types_path
+      redirect_to character_type_path(@character)
     else
       render :new
     end
