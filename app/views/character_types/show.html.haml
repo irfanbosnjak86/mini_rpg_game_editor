@@ -16,6 +16,7 @@
           %span :
           = attr.numerical_value
           %span= link_to "Edit", edit_character_type_character_attribute_path(@character, attr.id), class: "btn btn-xs btn-warning"
+          %span= link_to "Delete", character_type_character_attribute_path(@character, attr.id), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-xs btn-danger"
 
 .row
   %h2 Add Attribute

@@ -36,8 +36,10 @@ end
 
 Given(/^I am on "([^\"]*)" page$/) do |char_type|
   visit root_path
-  
-  find(:css, "#char-1/a[contains('#{char_type}')]").click
 
+  within(:css, "#char-1") do 
+    click_link(char_type)
+  end
+  
   expect(current_path).to eq("/character_types/1")
 end

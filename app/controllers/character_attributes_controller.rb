@@ -1,5 +1,5 @@
 class CharacterAttributesController < ApplicationController
-  before_action :set_char_attr, only: [:edit, :update]
+  before_action :set_char_attr, only: [:edit, :update, :destroy]
   def create
     @character = CharacterType.find(params[:character_type_id])
     @character.character_attributes.create(character_attributes_params)
@@ -13,6 +13,11 @@ class CharacterAttributesController < ApplicationController
     if @character_attribute.update(character_attributes_params)
       redirect_to @character
     end
+  end
+
+  def destroy
+    @character_attribute.destroy
+    redirect_to @character
   end
 
   private
