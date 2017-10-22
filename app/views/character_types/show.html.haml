@@ -1,25 +1,39 @@
 .row
-  %section#character_type
-    %h2 Character Type
-    %hr/
-    %h2 Name: #{@character.name.capitalize}
+  %h2 Character Type: #{@character.name.capitalize}
+  %hr/
+  .col-md-4#character_type
     .avatar
-      = image_tag(@character.character_avatar, size: "100x100")
+      %br/
+      = image_tag(@character.character_avatar, class: "char-image")
 
-  %section#character_attributes
+  .col-md-4#character_attributes
     %h2 Character Attributes 
-    %ul
-      - @character_attributes.each do |attr|
-        %li{ class: "character_attributes_#{attr.id}"}
-          %br/
-          = attr.name
-          %span :
-          = attr.numerical_value
-          %span= link_to "Edit", edit_character_type_character_attribute_path(@character, attr.id), class: "btn btn-xs btn-warning"
-          %span= link_to "Delete", character_type_character_attribute_path(@character, attr.id), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-xs btn-danger"
-
-.row
-  %h2 Add Attribute
-  = render 'character_attributes/form'
-
+    %hr/
+    .list-group
+      - if @character.character_attributes.present?
+        - @character_attributes.each do |attr| 
+          .row 
+            .col-md-7 
+              = link_to "#", class: "character_attributes_#{attr.id} list-group-item", onclick: "return false;" do
+                = attr.name
+                %span.badge 
+                  = attr.numerical_value
+            - if current_user && current_user.id == @character.user_id
+              .col-md-5
+                = link_to "Edit", edit_character_type_character_attribute_path(@character, attr.id), class: "btn btn-md btn-warning"
+                = link_to "Delete", character_type_character_attribute_path(@character, attr.id), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-md btn-danger"
+      - else 
+        This Character doesn't have any attributes
+        %br/
+  
+  - if current_user && current_user.id == @character.user_id
+    .col-md-4#add-attribute
+      %h2 Add Attribute
+      %hr/
+      = render 'character_attributes/form'
+.row 
+  %br/
+  %hr/
+  Created by:  
+  = link_to "@#{@character.user.username}", character_types_path(user: @character.user)
     
