@@ -8,12 +8,14 @@
 
   %section#character_attributes
     %h2 Character Attributes 
-    - @character_attributes.each do |attr|
-      Name: 
-      = attr.name 
-
-      Numerical Value: 
-      = attr.numerical_value
+    %ul
+      - @character_attributes.each do |attr|
+        %li{ class: "character_attributes_#{attr.id}"}
+          %br/
+          = attr.name
+          %span :
+          = attr.numerical_value
+          %span= link_to "Edit", edit_character_type_character_attribute_path(@character, attr.id), class: "btn btn-xs btn-warning"
 
 .row
   %h2 Add Attribute

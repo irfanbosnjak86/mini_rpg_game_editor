@@ -44,7 +44,7 @@ Then("I attach Avatar") do
 end
 
 
-When(/^I press "([^\"]*)"$/) do |button|
+When(/^I click "([^\"]*)"$/) do |button|
   click_button(button)
 end
 
