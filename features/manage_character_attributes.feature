@@ -26,7 +26,7 @@ Feature: Manage Character Attributes
     Then I should see "Add Attribute"
     And I fill out the attribute form
     Then I click "Save"
-    And I should have 1 more character attribute on "Warrior"
+    And I should have 1 "more" character attribute on "Warrior"
 
   Scenario: Edit Character Attribute
     Given I am loged in as User
@@ -43,4 +43,16 @@ Feature: Manage Character Attributes
     Then I click "Save"
     And I should see "Strength"
     And I should see "60"
+
+  Scenario: Delete Character Attribute
+    Given I am loged in as User
+    Given I have character types named Warrior, Mage
+    Given Charactes have attributes
+    And I am on "Warrior" page
+    Then I should see "Character Attributes"
+    And I should see "Speed"
+    And I should see "30"
+    And I click "Delete" within "Speed"
+    And I should have 1 "less" character attribute on "Warrior"
+
 
