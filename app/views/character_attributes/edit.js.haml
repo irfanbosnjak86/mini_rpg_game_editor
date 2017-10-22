@@ -1,1 +1,2 @@
-$("#char-attr-#{@character_attribute.id}").replaceWith("#{j render(partial: 'character_attributes/form', locals: {f: @character_attribute})}")
+$("#char-attr-#{@character_attribute.id}").children().hide(); 
+$("#{j render(partial: 'character_attributes/form', locals: {f: @character_attribute})}").appendTo("#char-attr-#{@character_attribute.id}")

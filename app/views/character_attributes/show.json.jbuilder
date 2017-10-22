@@ -1,1 +1,0 @@
-json.extract! @character_attribute, :id, :name
