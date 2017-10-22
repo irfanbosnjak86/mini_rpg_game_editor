@@ -13,7 +13,7 @@
         .col-md-6
           .panel.panel-primary{id: "char-#{character.id}"}
             .panel-heading
-              = link_to character.name.capitalize, character_type_path(character) 
+              = link_to character.name.capitalize, character_type_path(character), class: "list-group-item active" 
             .panel-body
               .row
                 .col-md-6
