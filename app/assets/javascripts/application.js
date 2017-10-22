@@ -34,13 +34,12 @@ $(document).on('turbolinks:load', function(){
     }
   });
 
-  // Removing or Hiding the form depending on action performed
-  $(document).on('click', ".delete", function(e){
-    e.preventDefault();
-    var char_attr_id = $(this).attr("data-char-attr")
-    var char_id = $(this).attr("data-char-id")
-    var url = $("delete-" + char_attr_id).href;
-    console.log($(this).href);
+  // Ajax delete attr
+  $(document).on('click', ".delete-attr", function(e){
+    var char_attr_id = $(this).attr("data-char-attr");
+    var char_id = $(this).attr("data-char-id");
+    var elementId = $(this).attr("id");
+    var url = $(this).attr("href");
 
     $.ajax({
       url: url,
