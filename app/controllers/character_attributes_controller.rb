@@ -1,6 +1,13 @@
 class CharacterAttributesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_char_attr, only: [:edit, :update, :destroy]
+  before_action :set_char_attr, only: [:show, :edit, :update, :destroy]
+
+  # dodao show radi testiranja, kao i show.json.jbuilder
+  def show
+    respond_to do |format|
+      format.json { render json: @character_attribute }
+    end
+  end
 
   def new
     @character = CharacterType.find(params[:character_type_id])
@@ -21,11 +28,16 @@ class CharacterAttributesController < ApplicationController
   end
 
   def edit
+    respond_to do |format|
+      format.js { render 'edit.js'}
+    end
   end
 
   def update
     if @character_attribute.update(character_attributes_params)
-      redirect_to @character
+      respond_to do |format|
+        format.js { render 'update.js'}
+      end
     end
   end
 

@@ -1,10 +1,9 @@
-= form_for([@character, @character_attribute ? @character_attribute : @character.character_attributes.build], 
-  html: {class: 'form-horizontal', id: "att-form"}, remote: true) do |f|
+= form_for([@character, @character_attribute], html: {class: "form-horizontal attr-form-#{@character_attribute.id}", id: "attr-form"}, remote: true) do |f|
 
   = f.text_field :name, class: "col-md-5 list-group-item", id: "char-attr-name", placeholder: "Name"
   
   = f.text_field :numerical_value, class: "col-md-2 list-group-item", id: "char-attr-value", placeholder: "Value"
   .col-md-5.actions 
     = f.submit "Save", class: 'btn btn-success'
-    = link_to "Cancel", "#", class: 'btn btn-default', id: "attr-cancel", remote: true
+    = link_to "Cancel", "#", class: 'btn btn-default', id: "attr-cancel", "data-char-attr": "#{@character_attribute.id}", "data-char-id": "#{@character.id}", remote: true
     

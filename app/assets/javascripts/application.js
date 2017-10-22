@@ -21,6 +21,18 @@ $(document).on('turbolinks:load', function(){
 
   $(document).on('click', "#attr-cancel", function(e){
     $("#add-attribute").show();
-    $("#att-form").remove();
+    var char_attr_id = $(this).attr("data-char-attr")
+    var char_id = $(this).attr("data-char-id")
+    if($(".attr-form-" + char_attr_id)) {
+      $.get( "/character_types/"+ char_id +"/character_attributes/" + char_attr_id + ".json", function( data ) {
+        // ovde sam pokusao da prikazem podatke 
+        $(".character_attributes").html(data);
+        console.log(data.id)
+        alert( "Load was performed." );
+      });
+    }
+    else{
+      $(".attr-form-").remove();
+    }
   });
 });
