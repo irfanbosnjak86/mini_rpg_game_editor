@@ -1,1 +1,5 @@
 $("#{j render(partial: 'character_attributes/char_attr', locals: {attr: @character_attribute})}").appendTo(".character_attributes");
+
+// removes info p tag if no attributes
+$(".no-attr").remove();
+

@@ -10,21 +10,22 @@
     %h2 Character Attributes 
     %hr/
     .list-group
-      - if @character.character_attributes.present?
-        .character_attributes
+      .character_attributes
+        - if @character.character_attributes.present?
           - @character_attributes.each do |attr| 
             = render partial: 'character_attributes/char_attr', locals: {attr: attr}
-       
-        - if current_user && current_user.id == @character.user_id
-          %hr/
-          #create-attribute
-          = link_to(new_character_type_character_attribute_path(@character), class: "btn btn-md btn-success", id: "add-attribute", remote: true) do
-            %span.glyphicon.glyphicon-plus-sign
-            Add Attribute
 
-      - else 
-        This Character doesn't have any attributes
-        %br/
+        - else 
+          %p.no-attr
+            This Character doesn't have any attributes
+          %br/
+
+      - if current_user && current_user.id == @character.user_id
+        %hr/
+        #create-attribute
+        = link_to(new_character_type_character_attribute_path(@character), class: "btn btn-md btn-success", id: "add-attribute", remote: true) do
+          %span.glyphicon.glyphicon-plus-sign
+          Add Attribute
     
 .row 
   %br/

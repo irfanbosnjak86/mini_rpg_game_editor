@@ -35,8 +35,11 @@ class CharacterAttributesController < ApplicationController
   end
 
   def destroy
+    # byebug
     @character_attribute.destroy
-    redirect_to @character
+    respond_to do |format|
+      format.js { }
+    end
   end
 
   private

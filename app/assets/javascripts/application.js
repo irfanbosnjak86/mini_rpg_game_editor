@@ -19,7 +19,7 @@
 
 $(document).on('turbolinks:load', function(){
 
-  // Removing or Hiding the form depending on action performed
+  // Removing or Hiding the char attr form depending on action performed
   $(document).on('click', "#attr-cancel", function(e){
     $("#add-attribute").show();
     var char_attr_id = $(this).attr("data-char-attr")
@@ -32,5 +32,26 @@ $(document).on('turbolinks:load', function(){
     else if($(".attr-form-")){
       $(".attr-form-").remove();
     }
+  });
+
+  // Removing or Hiding the form depending on action performed
+  $(document).on('click', ".delete", function(e){
+    e.preventDefault();
+    var char_attr_id = $(this).attr("data-char-attr")
+    var char_id = $(this).attr("data-char-id")
+    var url = $("delete-" + char_attr_id).href;
+    console.log($(this).href);
+
+    $.ajax({
+      url: url,
+      data: { character_type_id: char_id,
+              id: char_attr_id
+              },
+      type: "DELETE",
+      success: function() {
+        $("#char-attr-" + char_attr_id).remove();
+      },
+      dataType: "script"
+    });
   });
 });
