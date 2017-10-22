@@ -17,7 +17,7 @@
             %ul.nav.navbar-nav
               %li= link_to "Home", character_types_path
               - if current_user 
-                %li.active= link_to "My Characters", character_types_path
+                %li.active= link_to "My Characters", character_types_path(user: current_user)
 
             %ul.nav.navbar-nav.navbar-right
               - if current_user 
@@ -41,4 +41,4 @@
             .text-center.alert{ class: (key == 'notice' ? 'alert-success' : 'alert-danger') }
               = msg
          
-          = yield
+        = yield

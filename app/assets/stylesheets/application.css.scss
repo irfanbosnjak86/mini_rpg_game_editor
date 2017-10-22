@@ -17,3 +17,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.panel-heading a {
+  color: #eff0f1;
+}
+
+.char-image {
+  width: 200px;
+  height: 200px;
+  border: solid 1px #eae9e9;
+}

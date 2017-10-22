@@ -1,22 +1,40 @@
 .container
   .row
-    %h2 
-      List of Character Types
-      = link_to "Create Character Type", new_character_type_path, class: "btn btn-primary pull-right"
-    %br/
-  .row
-    %table.table.table-bordered
-      %thead
-        %tr
-          %th Name
-          %th Avatar
-          %th Option
-      %tbody
-        - @characters.each do |character|
-          %tr{id: "char-#{character.id}"}
-            %td= link_to character.name, character_type_path(character) 
-            %td= image_tag(character.character_avatar, size: "20x20")
-            %td
-              = link_to "Edit", edit_character_type_path(character), class: "btn btn-xs btn-warning"
-              = link_to "Delete", character_type_path(character), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-xs btn-danger"
+    .col-md-12
+      %h2 
+        List of Character Types
+        - if current_user
+          = link_to "Create Character Type", new_character_type_path, class: "btn btn-primary pull-right"
+      %hr/
+
+  - @characters.each_slice(2) do |slice|
+    .row
+      - slice.each do |character|
+        .col-md-6
+          .panel.panel-primary{id: "char-#{character.id}"}
+            .panel-heading
+              = link_to character.name.capitalize, character_type_path(character) 
+            .panel-body
+              .row
+                .col-md-6
+                  = image_tag(character.character_avatar, class: "char-image")
+                .col-md-6
+                  %strong Last 3 Attributes
+                  %hr/
+                  - if character.character_attributes.present?
+                    .list-group
+                      - character.character_attributes.last(3).each do |attr|
+                        = link_to "#", class: "list-group-item", onclick: "return false;" do
+                          = attr.name
+                          %span.badge 
+                            = attr.numerical_value
+                  - else 
+                    This Character doesn't have any attributes
+            .panel-footer
+              Created by:  
+              = link_to "@#{character.user.username}", character_types_path(user: character.user)
+              - if current_user && current_user.id == character.user_id
+                .pull-right
+                  = link_to "Edit", edit_character_type_path(character), class: "btn btn-xs btn-warning"
+                  = link_to "Delete", character_type_path(character), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-xs btn-danger"
   

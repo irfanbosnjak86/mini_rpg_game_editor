@@ -1,9 +1,13 @@
 class CharacterTypesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_character, only: [:show, :edit, :update, :destroy]
 
   def index
-    @characters = CharacterType.all
+    if params[:user]
+      @characters = CharacterType.where(user_id: params[:user])
+    else
+      @characters = CharacterType.all
+    end
   end
 
   def show
