@@ -13,11 +13,10 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
 
 
-$(document).on('turbolinks:load', function(){
+$(function(){
 
   // Removing or Hiding the char attr form depending on action performed
   $(document).on('click', "#attr-cancel", function(e){
@@ -57,5 +56,19 @@ $(document).on('turbolinks:load', function(){
   $(document).on('click', ".delete-char", function(){
     var char_id = $(this).attr("data-char-id");
     $(".col-md-6 .panel-primary#char-" + char_id).remove();
+  });
+
+  // Carrierwave Issue
+  $(document).on('click', "#submit-attr-form", function(e){
+    var char_id = $(this).attr("data-char-id");
+    var url = "/character_types/" + char_id + "/character_attributes/"
+    e.preventDefault();
+
+    $.ajax({
+      url: url,
+      data: $("#attr-form").serialize(),
+      type: "POST",
+      dataType: "script"
+    });
   });
 });

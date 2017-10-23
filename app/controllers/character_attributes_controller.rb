@@ -16,7 +16,7 @@ class CharacterAttributesController < ApplicationController
     @character_attribute = @character.character_attributes.create(character_attributes_params)
     
     respond_to do |format|
-      format.js { render 'create.js'}
+      format.js { render 'character_attributes/create'}
     end
   end
 
@@ -44,7 +44,7 @@ class CharacterAttributesController < ApplicationController
   private
 
   def character_attributes_params
-    params.require(:character_attribute).permit(:name, :numerical_value)
+    params.require(:character_attribute).permit(:id, :name, :numerical_value, :char_attr_avatar)
   end
 
   def set_char_attr
