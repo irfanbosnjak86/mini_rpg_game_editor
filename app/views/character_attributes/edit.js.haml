@@ -1,2 +1,2 @@
-$("#char-attr-#{@character_attribute.id}").children().hide(); 
-$("#{j render(partial: 'character_attributes/form', locals: {f: @character_attribute})}").appendTo("#char-attr-#{@character_attribute.id}")
+$("#myModal").html("#{j render(partial: 'character_attributes/form', locals: {f: @character_attribute})}");
+$("#myModal").modal("show");

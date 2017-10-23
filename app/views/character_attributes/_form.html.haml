@@ -1,11 +1,34 @@
-= form_for([@character, @character_attribute], html: {class: "form-horizontal attr-form-#{@character_attribute.id}", id: "attr-form"}, multipart: true, authenticity_token: true, remote: true ) do |f|
-  
-  = f.file_field :char_attr_avatar, class: 'form-controll', id: "char-attr-avatar"
+.modal-dialog
+  / Modal content
+  .modal-content
+    = form_for([@character, @character_attribute], html: {class: "form-horizontal attr-form-#{@character_attribute.id}", id: "attr-form"}, multipart: true, authenticity_token: true, remote: true ) do |f|
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"} ×
+        %h4.modal-title Character Attributes
 
-  = f.text_field :name, class: "col-md-3 list-group-item", id: "char-attr-name", placeholder: "Name"
-  
-  = f.text_field :numerical_value, class: "col-md-2 list-group-item", id: "char-attr-value", placeholder: "Value"
-  .col-md-5.actions 
-    = f.submit "Save", class: 'btn btn-success', id: "submit-attr-form", "data-char-id": "#{@character.id}", remote: true, "data-char-attr": "#{@character_attribute.id}"
-    = link_to "Cancel", "#", class: 'btn btn-default', id: "attr-cancel", "data-char-attr": "#{@character_attribute.id}", "data-char-id": "#{@character.id}", remote: true
-    
+      .modal-body.row
+        .col-md-5
+          #imagePreview
+            - if f.object.char_attr_avatar.present?
+              = image_tag(@character_attribute.char_attr_avatar, class: "char-image")
+            - else 
+              = image_tag("http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png", class: "char-image")
+          %br/
+          = button_tag(class: "btn btn-success", id: "logoSelect", type: "button") do
+            %span.glyphicon.glyphicon-plus-sign
+            Add Image
+          
+          = f.file_field :char_attr_avatar, id: "char-attr-avatar"
+        
+        .col-md-5
+          .form-group
+            = f.text_field :name, class: "form-control", id: "char-attr-name", placeholder: "Name"
+          
+          .form-group
+            = f.text_field :numerical_value, class: "form-control", id: "char-attr-value", placeholder: "Value" 
+
+      .modal-footer
+        = f.submit "Save", class: 'btn btn-success', id: "submit-attr-form", "data-char-id": "#{@character.id}", remote: true, "data-char-attr": "#{@character_attribute.id}", "data-dismiss": "modal"
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+
+        
