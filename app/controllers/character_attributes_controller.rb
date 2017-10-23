@@ -44,7 +44,7 @@ class CharacterAttributesController < ApplicationController
   private
 
   def character_attributes_params
-    params.require(:character_attribute).permit(:id, :name, :numerical_value, :char_attr_avatar)
+    params.require(:character_attribute).permit(:id, :character_type_id, :name, :numerical_value, :char_attr_avatar)
   end
 
   def set_char_attr

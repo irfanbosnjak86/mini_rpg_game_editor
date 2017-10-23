@@ -18,21 +18,6 @@
 
 $(function(){
 
-  // Removing or Hiding the char attr form depending on action performed
-  $(document).on('click', "#attr-cancel", function(e){
-    $("#add-attribute").show();
-    var char_attr_id = $(this).attr("data-char-attr")
-    var char_id = $(this).attr("data-char-id")
-
-    if($(".attr-form-" + char_attr_id)) {
-      $(".attr-form-" + char_attr_id).remove();
-      $("#char-attr-" + char_attr_id).children().show();
-    }
-    else if($(".attr-form-")){
-      $(".attr-form-").remove();
-    }
-  });
-
   // Ajax delete attr
   $(document).on('click', ".delete-attr", function(e){
     var char_attr_id = $(this).attr("data-char-attr");
@@ -59,6 +44,7 @@ $(function(){
   });
 
   // Carrierwave Issue
+
   $(document).on('click', "#submit-attr-form", function(e){
     var char_id = $(this).attr("data-char-id");
     var char_attr_id = $(this).attr("data-char-attr");
@@ -80,6 +66,30 @@ $(function(){
     });
   });
 
+  $(document).on('click', "#edit-attr-form", function(e){
+    var char_id = $(this).attr("data-char-id");
+    var char_attr_id = $(this).attr("data-char-attr");
+
+
+      var url = "/character_types/" + char_id + "/character_attributes/" + char_attr_id
+
+    e.preventDefault();
+
+    $.ajax({
+      url: url,
+      data: $("#attr-form").serialize(),
+      type: "PUT",
+      dataType: "script"
+    });
+  });
+
+  // Displaying the Add Attribute button after modal dissmiss
+  $(document).on("click", "[data-dismiss=modal]", function() {
+    $("#add-attribute").show();
+  });
+
+
+  // Character Attributes Image preview
   $(document).on("click", "#logoSelect" ,function(){
     $("#char-attr-avatar").click();
   });
