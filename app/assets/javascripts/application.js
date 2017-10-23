@@ -61,7 +61,15 @@ $(function(){
   // Carrierwave Issue
   $(document).on('click', "#submit-attr-form", function(e){
     var char_id = $(this).attr("data-char-id");
-    var url = "/character_types/" + char_id + "/character_attributes/"
+    var char_attr_id = $(this).attr("data-char-attr");
+
+    if(char_attr_id) {
+      var url = "/character_types/" + char_id + "/character_attributes/" + char_attr_id
+    }
+    else{
+      var url = "/character_types/" + char_id + "/character_attributes/"
+    }
+    
     e.preventDefault();
 
     $.ajax({

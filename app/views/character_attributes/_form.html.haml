@@ -6,6 +6,6 @@
   
   = f.text_field :numerical_value, class: "col-md-2 list-group-item", id: "char-attr-value", placeholder: "Value"
   .col-md-5.actions 
-    = f.submit "Save", class: 'btn btn-success', id: "submit-attr-form", "data-char-id": "#{@character.id}", remote: true
+    = f.submit "Save", class: 'btn btn-success', id: "submit-attr-form", "data-char-id": "#{@character.id}", remote: true, "data-char-attr": "#{@character_attribute.id}"
     = link_to "Cancel", "#", class: 'btn btn-default', id: "attr-cancel", "data-char-attr": "#{@character_attribute.id}", "data-char-id": "#{@character.id}", remote: true
     
