@@ -1,7 +1,7 @@
 .modal-dialog
-  / Modal content
   .modal-content
     = form_for([@character, @character_attribute], html: {class: "form-horizontal attr-form-#{@character_attribute.id}", id: "attr-form",  multipart: true}, authenticity_token: true, remote: true ) do |f|
+
       .modal-header
         %button.close{"data-dismiss" => "modal", :type => "button"} ×
         %h4.modal-title Character Attributes
@@ -19,12 +19,12 @@
             %span.glyphicon.glyphicon-plus-sign
             Add Image
           
+          / hidden file field 
           = f.file_field :char_attr_avatar, id: "char-attr-avatar"
         
         .col-md-5
           .form-group
             = f.text_field :name, class: "form-control", id: "char-attr-name", placeholder: "Name"
-          
           .form-group
             = f.text_field :numerical_value, class: "form-control", id: "char-attr-value", placeholder: "Value" 
 

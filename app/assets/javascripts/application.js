@@ -37,7 +37,7 @@ $(function(){
     });
   });
 
-  // Ajax delete attr
+  // Ajax delete char
   $(document).on('click', ".delete-char", function(){
     var char_id = $(this).attr("data-char-id");
     $(".col-md-6 .panel-primary#char-" + char_id).remove();
