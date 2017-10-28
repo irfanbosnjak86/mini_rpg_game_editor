@@ -36,9 +36,9 @@
         
         .col-md-5
           .form-group
-            = f.text_field :name, class: "form-control", id: "char-attr-name", placeholder: "Name"
+            = f.text_field :name, class: "form-control", id: "char-attr-name", placeholder: "Name", required: true 
           .form-group
-            = f.text_field :numerical_value, class: "form-control", id: "char-attr-value", placeholder: "Value" 
+            = f.text_field :numerical_value, class: "form-control", id: "char-attr-value", placeholder: "Value", type: "number", min: 1, max: 999, maxlength: 3, oninput: "javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);",required: true 
 
       .modal-footer
         = f.submit "Save", class: 'btn btn-success', id: 'submit-attr-form', "data-char-id": "#{@character.id}", "data-char-attr": "#{@character_attribute.id}", "data-dismiss": "modal", type: :submit, remote: true
