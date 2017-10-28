@@ -18,6 +18,11 @@
 
 $(function(){
 
+  // Handling the bug with bootstrap-modal
+  $('#myModal').on("click", "#submit-attr-form, button[data-dismiss='modal']", function(){ 
+    $(".modal-backdrop").remove(); 
+  })
+
   // Remove delete attr element
   $(document).on('click', ".delete-attr", function(e){
     var char_attr_id = $(this).attr("data-char-attr");

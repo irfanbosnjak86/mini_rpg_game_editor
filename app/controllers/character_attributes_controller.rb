@@ -7,29 +7,35 @@ class CharacterAttributesController < ApplicationController
     @character_attribute = @character.character_attributes.new
 
     respond_to do |format|
-      format.js { render 'new.js'}
+      format.js { render :new }
     end
   end
   
   def create
     @character = CharacterType.find(params[:character_type_id])
-    @character_attribute = @character.character_attributes.create(character_attributes_params)
+    @character_attribute = @character.character_attributes.new(character_attributes_params)
     
     respond_to do |format|
-      format.js { render 'character_attributes/create'}
+      if @character_attribute.save
+        format.js { render :create }
+      else
+        format.js { render :new }
+      end
     end
   end
 
   def edit
     respond_to do |format|
-      format.js { render 'edit.js'}
+      format.js { render :edit }
     end
   end
 
   def update
-    if @character_attribute.update(character_attributes_params)
-      respond_to do |format|
-        format.js { render 'update.js'}
+    respond_to do |format|
+      if @character_attribute.update(character_attributes_params)
+        format.js { render :update }
+      else
+        format.js { render :edit }
       end
     end
   end
@@ -44,7 +50,8 @@ class CharacterAttributesController < ApplicationController
   private
 
   def character_attributes_params
-    params.require(:character_attribute).permit(:id, :character_type_id, :name, :numerical_value, :char_attr_avatar)
+    params.require(:character_attribute).permit(:id, :character_type_id, :name, 
+                                                :numerical_value, :char_attr_avatar)
   end
 
   def set_char_attr

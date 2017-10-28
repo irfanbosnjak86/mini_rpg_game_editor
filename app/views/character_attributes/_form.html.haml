@@ -7,6 +7,18 @@
         %h4.modal-title Character Attributes
 
       .modal-body.row
+        - if @character_attribute.errors.any?
+          .row
+            .col-md-10.col-md-offset-1
+              #attr_error_explanation.alert.alert-danger
+                %strong
+                  = pluralize(@character_attribute.errors.count, "error")
+                  prohibited this character type from being saved:
+                %br/
+                %ul
+                  - @character_attribute.errors.full_messages.each do |msg|
+                    %li= msg
+
         .col-md-5
           #imagePreview
             - if f.object.char_attr_avatar.present?
