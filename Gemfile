@@ -21,6 +21,7 @@ gem 'haml', '~> 5.0', '>= 5.0.4'
 gem "haml-rails", "~> 1.0"
 gem 'devise', '~> 4.3'
 gem 'carrierwave', '~> 1.2', '>= 1.2.1'
+gem 'mini_magick', '~> 4.8'
 
 
 
