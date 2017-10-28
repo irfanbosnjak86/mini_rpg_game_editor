@@ -37,14 +37,14 @@ $(function(){
     });
   });
 
-    // Ajax delete attr
+  // Ajax delete attr
   $(document).on('click', ".delete-char", function(){
     var char_id = $(this).attr("data-char-id");
     $(".col-md-6 .panel-primary#char-" + char_id).remove();
   });
 
   // Carrierwave Issue
-
+  // Usefull link: https://quickleft.com/blog/how-to-upload-to-carrierwave-with-javascript/
   $(document).on('click', "#submit-attr-form", function(e){
     var url = $("#attr-form").attr("action");
     var requestType = $("#attr-form").attr("method");
