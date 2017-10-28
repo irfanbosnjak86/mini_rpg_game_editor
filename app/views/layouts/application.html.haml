@@ -41,8 +41,5 @@
             .text-center.alert{ class: (key == 'notice' ? 'alert-success' : 'alert-danger') }
               = msg
       .row 
-        .col-md-12  
-          / bootstrap modal
-          .modal#myModal.fade{:role => "dialog"}
-          
+        .col-md-12 
           = yield

@@ -30,9 +30,9 @@
         = link_to(new_character_type_character_attribute_path(@character), class: "btn btn-md btn-success", id: "add-attribute", remote: true) do
           %span.glyphicon.glyphicon-plus-sign
           Add Attribute
+        / bootstrap modal
+        .modal#myModal.fade{:role => "dialog"}
           
-        
-    
 .row 
   %br/
   %hr/
