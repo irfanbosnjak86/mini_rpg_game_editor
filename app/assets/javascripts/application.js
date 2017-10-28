@@ -18,26 +18,13 @@
 
 $(function(){
 
-  // Ajax delete attr
+  // Remove delete attr element
   $(document).on('click', ".delete-attr", function(e){
     var char_attr_id = $(this).attr("data-char-attr");
-    var char_id = $(this).attr("data-char-id");
-    var url = $(this).attr("href");
-
-    $.ajax({
-      url: url,
-      data: { character_type_id: char_id,
-              id: char_attr_id
-              },
-      type: "DELETE",
-      success: function() {
-        $("#char-attr-" + char_attr_id).remove();
-      },
-      dataType: "script"
-    });
+    $("#char-attr-" + char_attr_id).remove();
   });
 
-  // Ajax delete char
+  // Remove delete char element
   $(document).on('click', ".delete-char", function(){
     var char_id = $(this).attr("data-char-id");
     $(".col-md-6 .panel-primary#char-" + char_id).remove();
