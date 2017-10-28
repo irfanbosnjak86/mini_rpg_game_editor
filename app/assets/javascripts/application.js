@@ -46,39 +46,18 @@ $(function(){
   // Carrierwave Issue
 
   $(document).on('click', "#submit-attr-form", function(e){
-    var char_id = $(this).attr("data-char-id");
-    var char_attr_id = $(this).attr("data-char-attr");
-
-    if(char_attr_id) {
-      var url = "/character_types/" + char_id + "/character_attributes/" + char_attr_id
-    }
-    else{
-      var url = "/character_types/" + char_id + "/character_attributes/"
-    }
+    var url = $("#attr-form").attr("action");
+    var requestType = $("#attr-form").attr("method");
+    var formData = new FormData($("#attr-form")[0]);
 
     e.preventDefault();
 
     $.ajax({
       url: url,
-      data: $("#attr-form").serialize(),
-      type: "POST",
-      dataType: "script"
-    });
-  });
-
-  $(document).on('click', "#edit-attr-form", function(e){
-    var char_id = $(this).attr("data-char-id");
-    var char_attr_id = $(this).attr("data-char-attr");
-
-
-      var url = "/character_types/" + char_id + "/character_attributes/" + char_attr_id
-
-    e.preventDefault();
-
-    $.ajax({
-      url: url,
-      data: $("#attr-form").serialize(),
-      type: "PUT",
+      data: formData,
+      processData: false,
+      contentType: false,
+      type: requestType,
       dataType: "script"
     });
   });
@@ -105,6 +84,5 @@ $(function(){
       $('#imagePreview').html(img);
     }
     reader.readAsDataURL(image);
-    console.log(files);
   });
 });

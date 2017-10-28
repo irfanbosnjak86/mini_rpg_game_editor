@@ -1,7 +1,5 @@
 .row{id: "char-attr-#{attr.id}"}
   .col-md-7 
-    
-
     = link_to "#", class: "character_attributes_#{attr.id} list-group-item", onclick: "return false;" do
       - if attr.char_attr_avatar.present?
         = image_tag(attr.char_attr_avatar, size: "40x40")

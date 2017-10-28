@@ -27,11 +27,11 @@
       - if current_user && current_user.id == @character.user_id
         %hr/
         #create-attribute
-        = link_to(new_character_type_character_attribute_path(@character), class: "btn btn-md btn-success", id: "add-attribute", "data-toggle": "modal", "data-target": "#myModal", remote: true) do
+        = link_to(new_character_type_character_attribute_path(@character), class: "btn btn-md btn-success", id: "add-attribute", remote: true) do
           %span.glyphicon.glyphicon-plus-sign
           Add Attribute
           
-        #myModal.modal.fade{:role => "dialog"}
+        
     
 .row 
   %br/
