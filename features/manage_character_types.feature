@@ -67,7 +67,7 @@ Feature: Manage Character Types
     When I go to the list of character types
     Then I should see "Warrior"
     And I should see "Mage"
-    When I click on option "Delete" on "Warrior" row
+    When I click on option "Delete" on first "Warrior" 
     Then I see popup "Are you sure?"
     Then I confirm popup
     And I should see "Mage"
