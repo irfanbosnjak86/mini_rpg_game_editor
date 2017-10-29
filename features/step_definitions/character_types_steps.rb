@@ -39,8 +39,9 @@ When(/^I fill in "([^\"]*)" with "([^\"]*)"$/) do |field, value|
 end
 
 Then("I attach Avatar") do
+  click_button("Add Avatar")
   file =  File.open("#{Rails.root}/spec/support/avatars/test.jpg")
-  attach_file('Character avatar', file.path)
+  attach_file('character_type[character_avatar]', file.path, visible: false)
 end
 
 
