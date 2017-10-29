@@ -1,7 +1,12 @@
 Given(/^Charactes have attributes$/) do
   chars = CharacterType.all
+  file =  File.open("#{Rails.root}/spec/support/avatars/test.jpg")
+  char_attributes = {"Speed": 30, "Strength": 40}
   chars.each do |char|
-    CharacterAttribute.create!(character_type_id: char.id, name: "Speed", numerical_value: 30)
+    char_attributes.each do |name, value|
+      CharacterAttribute.create!(character_type_id: char.id, name: name, 
+                              numerical_value: value, char_attr_avatar: file)
+    end
   end
 end
 
@@ -42,4 +47,13 @@ Given(/^I am on "([^\"]*)" page$/) do |char_type|
   end
   
   expect(current_path).to eq("/character_types/1")
+end
+
+Then(/^I should see char attr avatar for "([^\"]*)" "([^\"]*)" of "([^\"]*)"$/) do |char_attr_name, 
+  char_attr_val, char_type_name|
+  chars = CharacterType.where(name: char_type_name)
+  char = chars.first
+  char_attr = char.character_attributes.where(name: char_attr_name, numerical_value: char_attr_val).first
+
+  find(:css, "img#char-attr-avatar-#{char_attr.id}")
 end
