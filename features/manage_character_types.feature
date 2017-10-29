@@ -41,32 +41,32 @@ Feature: Manage Character Types
     Then I should see "Warrior"
     And I follow "Warrior"
     Then I should see "Character Type"
-    And I should see "Name: Warrior"
+    And I should see "Character Type: Warrior"
 
-  Scenario: Edit Caracter Type
-    Given I am loged in as User
-    Given I have character types named Warrior, Mage
-    When I go to the list of character types
-    Then I should see "Warrior"
-    And I should see "Mage"
-    When I click on option "Edit" on "Warrior" row
-    Then I should see "Edit Character Type"
-    And I fill in "Name" with "Warlock"
-    And I click "Update Character type"
-    Then I should see "Character type successfuly updated."
-    And I should see "Warlock"
-    And I should see "Mage"
-    And I should have 2 character type
+  # Scenario: Edit Caracter Type
+  #   Given I am loged in as User
+  #   Given I have character types named Warrior, Mage
+  #   When I go to the list of character types
+  #   Then I should see "Warrior"
+  #   And I should see "Mage"
+  #   When I click on option "Edit" on "Warrior" row
+  #   Then I should see "Edit Character Type"
+  #   And I fill in "Name" with "Warlock"
+  #   And I click "Update Character type"
+  #   Then I should see "Character type successfuly updated."
+  #   And I should see "Warlock"
+  #   And I should see "Mage"
+  #   And I should have 2 character type
   
-  @javascript
-  Scenario: Destroy Caracter Type
-    Given I am loged in as User
-    Given I have character types named Warrior, Mage
-    When I go to the list of character types
-    Then I should see "Warrior"
-    And I should see "Mage"
-    When I click on option "Delete" on "Warrior" row
-    Then I see popup "Are you sure?"
-    Then I confirm popup
-    And I should see "Mage"
-    And I should have 1 character type
+  # @javascript
+  # Scenario: Destroy Caracter Type
+  #   Given I am loged in as User
+  #   Given I have character types named Warrior, Mage
+  #   When I go to the list of character types
+  #   Then I should see "Warrior"
+  #   And I should see "Mage"
+  #   When I click on option "Delete" on "Warrior" row
+  #   Then I see popup "Are you sure?"
+  #   Then I confirm popup
+  #   And I should see "Mage"
+  #   And I should have 1 character type
