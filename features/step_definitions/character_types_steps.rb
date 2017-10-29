@@ -56,7 +56,6 @@ end
 
 When(/^I click on option "([^\"]*)" on first "([^\"]*)"$/) do |button, name|
   chars = CharacterType.where(name: name)
-  # byebug
   char = chars.first
   find(:css, "#char-id#{char.id}", text: "#{button}").click
 end
