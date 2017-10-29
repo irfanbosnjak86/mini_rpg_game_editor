@@ -22,6 +22,8 @@
 
       .col-md-5
         .form-group
+          %strong Avatar
+          %br/
           #imagePreview
             - if f.object.character_avatar.present?
               = image_tag(@character.character_avatar, class: "char-image")
@@ -34,7 +36,7 @@
             Add Image
           
           = f.file_field :character_avatar, class: 'form-control', id: 'char-attr-avatar'
-          
+
     .row  
       %hr/
       = f.submit class: 'btn btn-primary'
