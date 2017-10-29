@@ -19,7 +19,7 @@
                 .col-md-6
                   = link_to(character_type_path(character)) do  
                     = image_tag(character.character_avatar, class: "char-image")
-                    
+
                 .col-md-6
                   %strong Last 3 Attributes
                   %hr/
@@ -27,7 +27,8 @@
                     .list-group
                       - character.character_attributes.last(3).each do |attr|
                         = link_to "#", class: "list-group-item", onclick: "return false;" do
-                          = attr.name
+                          = image_tag(attr.char_attr_avatar, size: "40x40")
+                          = attr.name.titleize
                           %span.badge 
                             = attr.numerical_value
                   - else 
