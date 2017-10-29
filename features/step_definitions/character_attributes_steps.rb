@@ -2,6 +2,7 @@ Given(/^Charactes have attributes$/) do
   chars = CharacterType.all
   file =  File.open("#{Rails.root}/spec/support/avatars/test.jpg")
   char_attributes = {"Speed": 30, "Strength": 40}
+  # count is 2, because we are creating 2 attributes per each chars
   chars.each do |char|
     char_attributes.each do |name, value|
       CharacterAttribute.create!(character_type_id: char.id, name: name, 
@@ -11,19 +12,23 @@ Given(/^Charactes have attributes$/) do
 end
 
 Then(/^I fill out the attribute form$/) do
-  fill_in("Name", with: "Speed")
-  fill_in("Numerical value", with: 30)
+  fill_in('character_attribute[name]', with: "Speed")
+  fill_in('character_attribute[numerical_value]', with: 30)
+  click_button("Add Attribute Avatar")
+  file =  File.open("#{Rails.root}/spec/support/avatars/test.jpg")
+  attach_file('character_attribute[char_attr_avatar]', file.path, visible: false)
 end
 
-Then(/^I should have (\d+) "([^\"]*)" character attribute on "([^\"]*)"$/) do |count, condition, string|
-  if condition == "more"
+Then(/^I should have (\d+) "([^\"]*)" character attribute on "([^\"]*)"$/) do |count, condition_string, string|
+  # take a look "Characters have attributes" step
+  count = 2
+  if condition_string == "more"
     count += 1
   else
     count -= 1
   end
 
-  char = CharacterType.find_by_name(string)
-  
+  char = CharacterType.where(name: string).first
   expect(char.character_attributes.count).to eq(count) 
 end
 
@@ -56,4 +61,12 @@ Then(/^I should see char attr avatar for "([^\"]*)" "([^\"]*)" of "([^\"]*)"$/) 
   char_attr = char.character_attributes.where(name: char_attr_name, numerical_value: char_attr_val).first
 
   find(:css, "img#char-attr-avatar-#{char_attr.id}")
+end
+
+
+When(/^I follow first "([^\"]*)"$/) do |name|
+  chars = CharacterType.where(name: name)
+  char = chars.first
+
+  find(:css, "a#link-to-char-#{char.id}", text: name).click
 end

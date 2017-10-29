@@ -39,7 +39,7 @@ Feature: Manage Character Types
     Given I have character types named Warrior, Mage
     When I go to the list of character types
     Then I should see "Warrior"
-    And I follow "Warrior"
+    And I follow first "Warrior"
     Then I should see "Character Type"
     And I should see "Character Type: Warrior"
 
