@@ -17,7 +17,9 @@
             .panel-body
               .row
                 .col-md-6
-                  = image_tag(character.character_avatar, class: "char-image")
+                  = link_to(character_type_path(character)) do  
+                    = image_tag(character.character_avatar, class: "char-image")
+                    
                 .col-md-6
                   %strong Last 3 Attributes
                   %hr/
