@@ -4,6 +4,7 @@ class CharAttrAvatarUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
 
+  # reize char attribute avatar
   process resize_to_fill: [200, 200]
 
   # Choose what kind of storage to use for this uploader:
