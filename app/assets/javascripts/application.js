@@ -59,8 +59,21 @@ $(function(){
     $("#add-attribute").show();
   });
 
+  // Character Type Avatar Preview
+   $("#char-type-form").on("change", "#char-attr-avatar", function(event) {
+    var files = event.target.files;
+    var image = files[0]
+    var reader = new FileReader();
+    reader.onload = function(file) {
+      var img = new Image();
+      img.src = file.target.result;
+      img.className = "char-image"
+      $('#imagePreview').html(img);
+    }
+    reader.readAsDataURL(image);
+  });
 
-  // Character Attributes Image preview
+  // Character Attributes Avatar Preview
   $(document).on("click", "#logoSelect" ,function(){
     $("#char-attr-avatar").click();
   });

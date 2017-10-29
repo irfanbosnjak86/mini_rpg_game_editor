@@ -1,19 +1,40 @@
-= form_for @character do |f|
-  - if @character.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@character.errors.count, "error")
-        prohibited this character type from being saved:
-      %ul
-        - @character.errors.full_messages.each do |msg|
-          %li= msg
-  .form-group
-    = f.label :name
-    = f.text_field :name, class: 'form-control'
+.col-md-8.col-md-offset-2
+  = form_for @character, html: {id: "char-type-form"} do |f|
+    .row
+      .col-md-8.col-md-offset-2
+        - if @character.errors.any?
+          #char_type_error_explanation.alert.alert-danger
+            %strong
+              = pluralize(@character.errors.count, "error")
+              prohibited this character type from being saved:
+            %br/
+            %ul
+              - @character.errors.full_messages.each do |msg|
+                %li= msg
+    
+    .row 
+      .col-md-5
+        .form-group
+          = f.label :name
+          = f.text_field :name, class: 'form-control'
+        %p
+          Character name examples: Warrior, Mage, Hunter ...
 
-  .form-group
-    = f.label :character_avatar
-    = f.file_field :character_avatar, class: 'form-control'
-  
-  .action
-    = f.submit class: 'btn btn-success'
+      .col-md-5
+        .form-group
+          #imagePreview
+            - if f.object.character_avatar.present?
+              = image_tag(@character.character_avatar, class: "char-image")
+            - else 
+              = image_tag("http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png", class: "char-image")
+            %br/
+          %br/
+          = button_tag(class: "btn btn-success", id: "logoSelect", type: "button") do
+            %span.glyphicon.glyphicon-plus-sign
+            Add Image
+          
+          = f.file_field :character_avatar, class: 'form-control', id: 'char-attr-avatar'
+          
+    .row  
+      %hr/
+      = f.submit class: 'btn btn-primary'
