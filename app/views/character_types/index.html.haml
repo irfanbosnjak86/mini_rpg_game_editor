@@ -38,6 +38,6 @@
               = link_to "@#{character.user.username}", character_types_path(user: character.user)
               - if current_user && current_user.id == character.user_id
                 .pull-right
-                  = link_to "Edit", edit_character_type_path(character), class: "btn btn-xs btn-warning"
+                  = link_to "Edit", edit_character_type_path(character), class: "btn btn-xs btn-warning",id: "char-id#{character.id}"
                   = link_to "Delete", character_type_path(character), method: :delete, data: {confirm: 'Are you sure?'}, class: "delete-char btn btn-xs btn-danger", id: "char-id#{character.id}", "data-char-id": "#{character.id}", remote: true
   
