@@ -1,6 +1,7 @@
 class CharacterTypesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_character, only: [:show, :edit, :update, :destroy]
+  before_action :check_user, only: [:edit, :update]
 
   def index
     if params[:user]
@@ -56,5 +57,12 @@ class CharacterTypesController < ApplicationController
 
     def set_character
       @character = CharacterType.find(params[:id])
+    end
+
+    def check_user
+      unless current_user.id == @character.user_id
+        flash[:alert] = "You dont have permition to add attributes"
+        redirect_to @character 
+      end
     end
 end
