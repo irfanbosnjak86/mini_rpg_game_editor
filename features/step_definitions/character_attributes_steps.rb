@@ -32,15 +32,22 @@ Then(/^I should have (\d+) "([^\"]*)" character attribute on "([^\"]*)"$/) do |c
   expect(char.character_attributes.count).to eq(count) 
 end
 
-When(/^I click "([^\"]*)" within "([^\"]*)"$/) do |button, name|
-  within(:xpath, "//ul/li[contains(.,'#{name}')]") do
-    find(:xpath, "//span/a[contains(.,'#{button}')]").click
+When(/^I click "([^\"]*)" at the end of "([^\"]*)" attribute of "([^\"]*)"$/) do |button, 
+                                                                                  attr_name, char_type_name|
+  chars = CharacterType.where(name: char_type_name)
+  char = chars.first
+  char_attr = char.character_attributes.where(name: attr_name).first
+
+  within(:css, ".row#char-attr-#{char_attr.id}") do
+    within(:css, ".char-options") do
+      click_link(button)
+    end
   end
 end
 
 Then(/^I edit attributes "([^\"]*)" "([^\"]*)" with "([^\"]*)" and "([^\"]*)" with (\d+)$/) do |field, string, value, field2, value2|
-  fill_in("Name", with: value)
-  fill_in("Numerical value", with: value2)
+  fill_in('character_attribute[name]', with: value)
+  fill_in('character_attribute[numerical_value]', with: value2)
 end
 
 
