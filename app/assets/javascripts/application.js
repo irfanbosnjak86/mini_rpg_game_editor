@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require jquery
-//= require bootstrap-sprockets
+//= require bootstrap
 //= require jquery_ujs
 //= require_tree .
 
@@ -41,7 +41,7 @@ $(function(){
     var url = $("#attr-form").attr("action");
     var requestType = $("#attr-form").attr("method");
     var formData = new FormData($("#attr-form")[0]);
-
+    $(".spinner").show();
     e.preventDefault();
 
     $.ajax({

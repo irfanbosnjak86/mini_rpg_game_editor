@@ -1,2 +1,3 @@
+$(".spinner").hide();
 $("#char-attr-#{@character_attribute.id}").children().remove();
 $("#char-attr-#{@character_attribute.id}").replaceWith("#{j render(partial: 'character_attributes/char_attr', locals: {attr: @character_attribute})}")
