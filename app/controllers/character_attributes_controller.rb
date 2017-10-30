@@ -1,7 +1,7 @@
 class CharacterAttributesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_char_attr, only: [:edit, :update, :destroy]
-  before_action :check_user, only: [:edit, :update]
+  before_action :check_user, only: [:edit, :update, :destroy]
 
   def new
     @character = CharacterType.find(params[:character_type_id])
